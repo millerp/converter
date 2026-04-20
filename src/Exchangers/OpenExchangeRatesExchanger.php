@@ -29,7 +29,7 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
     /**
      * Cache manager.
      *
-     * @var \Illuminate\Cache\CacheManager
+     * @var CacheManager
      */
     protected $cache;
 
@@ -64,7 +64,6 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
     /**
      * Constructor.
      *
-     * @param \Illuminate\Cache\CacheManager $cache
      *
      * @return void
      */
@@ -75,8 +74,6 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
 
     /**
      * Get the API Key.
-     *
-     * @return array
      */
     public function getAppId(): array
     {
@@ -86,8 +83,7 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
     /**
      * Set the app id.
      *
-     * @param mixed $appId
-     *
+     * @param  mixed  $appId
      * @return $this
      */
     public function setAppId($appId): self
@@ -100,11 +96,8 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
     /**
      * Return the exchange rate for the provided currency code.
      *
-     * @param string $code
      *
-     * @throws \Exception
-     *
-     * @return float
+     * @throws Exception
      */
     public function get(string $code): float
     {
@@ -113,7 +106,7 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
         $code = strtoupper($code);
 
         if (empty($rates[$code])) {
-            throw new Exception();
+            throw new Exception;
         }
 
         return $rates[$code];
@@ -121,8 +114,6 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
 
     /**
      * Return the api url.
-     *
-     * @return string
      */
     public function getUrl(): string
     {
@@ -132,7 +123,6 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
     /**
      * Set the api url.
      *
-     * @param string $url
      *
      * @return $this
      */
@@ -145,8 +135,6 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
 
     /**
      * Return cache expiration duration.
-     *
-     * @return int
      */
     public function getExpires(): int
     {
@@ -156,8 +144,7 @@ class OpenExchangeRatesExchanger implements ExchangerInterface
     /**
      * Set cache expiration duration.
      *
-     * @param mixed $expires
-     *
+     * @param  mixed  $expires
      * @return $this
      */
     public function setExpires($expires): self

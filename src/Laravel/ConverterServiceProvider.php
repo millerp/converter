@@ -20,11 +20,11 @@
 
 namespace Cartalyst\Converter\Laravel;
 
-use Illuminate\Support\Arr;
 use Cartalyst\Converter\Converter;
-use Illuminate\Support\ServiceProvider;
 use Cartalyst\Converter\Exchangers\NativeExchanger;
 use Cartalyst\Converter\Exchangers\OpenExchangeRatesExchanger;
+use Illuminate\Support\Arr;
+use Illuminate\Support\ServiceProvider;
 
 class ConverterServiceProvider extends ServiceProvider
 {
@@ -64,7 +64,7 @@ class ConverterServiceProvider extends ServiceProvider
     protected function registerExchangers()
     {
         $this->app->singleton('converter.native.exchanger', function () {
-            return new NativeExchanger();
+            return new NativeExchanger;
         });
 
         $this->app->singleton('converter.openexchangerates.exchanger', function ($app) {

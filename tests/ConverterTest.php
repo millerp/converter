@@ -20,18 +20,18 @@
 
 namespace Cartalyst\Converter\Tests;
 
+use Cartalyst\Converter\Converter;
+use Cartalyst\Converter\Exchangers\NativeExchanger;
 use Exception;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use Cartalyst\Converter\Converter;
-use Cartalyst\Converter\Exchangers\NativeExchanger;
 
 class ConverterTest extends TestCase
 {
     /**
      * Holds the Converter instance.
      *
-     * @var \Cartalyst\Converter\Converter
+     * @var Converter
      */
     protected $converter;
 
@@ -40,31 +40,31 @@ class ConverterTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->converter = new Converter(new NativeExchanger());
+        $this->converter = new Converter(new NativeExchanger);
 
         $this->converter->setMeasurements([
             'area' => [
                 'sqm' => [
                     'format' => '1,00.00 sq m',
-                    'unit'   => 1,
+                    'unit' => 1,
                 ],
 
                 'acre' => [
                     'format' => '1,00.000 ac',
-                    'unit'   => 0.000247105,
+                    'unit' => 0.000247105,
                 ],
             ],
 
             'currency' => [
                 'usd' => [
-                    'format'   => '$1,0.00',
+                    'format' => '$1,0.00',
                     'negative' => '($1,0.00)',
-                    'unit'     => 1,
+                    'unit' => 1,
                 ],
 
                 'eur' => [
                     'format' => '&euro;1,0.00',
-                    'unit'   => 0.727204,
+                    'unit' => 0.727204,
                 ],
 
                 'gbp' => [
@@ -75,84 +75,84 @@ class ConverterTest extends TestCase
             'length' => [
                 'km' => [
                     'format' => '1,0.000 km',
-                    'unit'   => 0.001,
+                    'unit' => 0.001,
                 ],
 
                 'mi' => [
                     'format' => '1,0.000 mi',
-                    'unit'   => 0.000621371,
+                    'unit' => 0.000621371,
                 ],
 
                 'm' => [
                     'format' => '1,0.000 m',
-                    'unit'   => 1.00,
+                    'unit' => 1.00,
                 ],
 
                 'cm' => [
                     'format' => '1!0 cm',
-                    'unit'   => 100,
+                    'unit' => 100,
                 ],
 
                 'mm' => [
                     'format' => '1,0.00 mm',
-                    'unit'   => 1000,
+                    'unit' => 1000,
                 ],
 
                 'ft' => [
                     'format' => '1,0.00 ft.',
-                    'unit'   => 3.28084,
+                    'unit' => 3.28084,
                 ],
 
                 'in' => [
                     'format' => '1,0.00 in',
-                    'unit'   => 39.3701,
+                    'unit' => 39.3701,
                 ],
             ],
 
             'weight' => [
                 'kg' => [
                     'format' => '1.0,00 KG',
-                    'unit'   => 1.00,
+                    'unit' => 1.00,
                 ],
 
                 'g' => [
                     'format' => '(1,0.00 grams)',
-                    'unit'   => 1000.00,
+                    'unit' => 1000.00,
                 ],
 
                 'lb' => [
                     'format' => '1 lb',
-                    'unit'   => 2.20462,
+                    'unit' => 2.20462,
                 ],
             ],
 
             'temperature' => [
                 'c' => [
                     'format' => '1,0.00 C',
-                    'unit'   => 1.00,
+                    'unit' => 1.00,
                 ],
 
                 'f' => [
                     'format' => '1,0.00 °F',
-                    'unit'   => 1.80,
+                    'unit' => 1.80,
                     'offset' => 32,
                 ],
 
                 'k' => [
                     'format' => '1,0.00 K',
-                    'unit'   => 1.00,
+                    'unit' => 1.00,
                     'offset' => 273.15,
                 ],
 
                 'rankine' => [
                     'format' => '1,0.00 °R',
-                    'unit'   => 1.80,
+                    'unit' => 1.80,
                     'offset' => 491.67,
                 ],
 
                 'romer' => [
                     'format' => '1,0.00 °Rø',
-                    'unit'   => 0.525,
+                    'unit' => 0.525,
                     'offset' => 7.5,
                 ],
             ],
@@ -170,7 +170,7 @@ class ConverterTest extends TestCase
     /** @test */
     public function converter_can_be_instantiated()
     {
-        $converter = new Converter(new NativeExchanger());
+        $converter = new Converter(new NativeExchanger);
 
         $this->assertInstanceOf(Converter::class, $converter);
     }
@@ -178,19 +178,19 @@ class ConverterTest extends TestCase
     /** @test */
     public function it_can_set_and_get_measurements()
     {
-        $converter = new Converter(new NativeExchanger());
+        $converter = new Converter(new NativeExchanger);
 
         $converter->setMeasurements([
             'currency' => [
                 'usd' => [
-                    'format'   => '$1,0.00',
+                    'format' => '$1,0.00',
                     'negative' => '($1,0.00)',
-                    'unit'     => 1,
+                    'unit' => 1,
                 ],
 
                 'eur' => [
                     'format' => '&euro;1,0.00',
-                    'unit'   => 0.727204,
+                    'unit' => 0.727204,
                 ],
 
                 'gbp' => [
@@ -367,13 +367,14 @@ class ConverterTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider data_provider_for_temperatures
      *
-     * @param mixed $from
-     * @param mixed $to
-     * @param mixed $fromVal
-     * @param mixed $toVal
-     * @param mixed $toFormatted
+     * @param  mixed  $from
+     * @param  mixed  $to
+     * @param  mixed  $fromVal
+     * @param  mixed  $toVal
+     * @param  mixed  $toFormatted
      */
     public function it_can_convert_temperatures($from, $to, $fromVal, $toVal, $toFormatted)
     {

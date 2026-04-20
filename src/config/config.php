@@ -41,12 +41,12 @@ return [
         'area' => [
             'sqm' => [
                 'format' => '1,00.00 sq m',
-                'unit'   => 1,
+                'unit' => 1,
             ],
 
             'acre' => [
                 'format' => '1,00.000 ac',
-                'unit'   => 0.000247105,
+                'unit' => 0.000247105,
             ],
         ],
 
@@ -85,37 +85,37 @@ return [
         'length' => [
             'km' => [
                 'format' => '1,0.000 km',
-                'unit'   => 0.001,
+                'unit' => 0.001,
             ],
 
             'mi' => [
                 'format' => '1,0.000 mi.',
-                'unit'   => 0.000621371,
+                'unit' => 0.000621371,
             ],
 
             'm' => [
                 'format' => '1,0.000 m',
-                'unit'   => 1.00,
+                'unit' => 1.00,
             ],
 
             'cm' => [
                 'format' => '1!0 cm',
-                'unit'   => 100,
+                'unit' => 100,
             ],
 
             'mm' => [
                 'format' => '1,0.00 mm',
-                'unit'   => 1000,
+                'unit' => 1000,
             ],
 
             'ft' => [
                 'format' => '1,0.00 ft.',
-                'unit'   => 3.28084,
+                'unit' => 3.28084,
             ],
 
             'in' => [
                 'format' => '1,0.00 in.',
-                'unit'   => 39.3701,
+                'unit' => 39.3701,
             ],
         ],
 
@@ -131,12 +131,12 @@ return [
         'weight' => [
             'kg' => [
                 'format' => '1,0.00 kg',
-                'unit'   => 1.00,
+                'unit' => 1.00,
             ],
 
             'g' => [
                 'format' => '1,0.00 g',
-                'unit'   => 1000.00,
+                'unit' => 1000.00,
             ],
         ],
 
@@ -152,30 +152,30 @@ return [
         'temperature' => [
             'c' => [
                 'format' => '1,0.00 C',
-                'unit'   => 1.00,
+                'unit' => 1.00,
             ],
 
             'f' => [
                 'format' => '1,0.00 °F',
-                'unit'   => 1.80,
+                'unit' => 1.80,
                 'offset' => 32,
             ],
 
             'k' => [
                 'format' => '1,0.00 K',
-                'unit'   => 1.00,
+                'unit' => 1.00,
                 'offset' => 273.15,
             ],
 
             'rankine' => [
                 'format' => '1,0.00 °R',
-                'unit'   => 1.80,
+                'unit' => 1.80,
                 'offset' => 491.67,
             ],
 
             'romer' => [
                 'format' => '1,0.00 °Rø',
-                'unit'   => 0.525,
+                'unit' => 0.525,
                 'offset' => 7.5,
             ],
         ],

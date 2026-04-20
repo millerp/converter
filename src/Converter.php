@@ -20,17 +20,17 @@
 
 namespace Cartalyst\Converter;
 
+use Cartalyst\Converter\Exchangers\ExchangerInterface;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Cartalyst\Converter\Exchangers\ExchangerInterface;
 
 class Converter
 {
     /**
      * Exchanger driver.
      *
-     * @var \Cartalyst\Converter\Exchangers\ExchangerInterface
+     * @var ExchangerInterface
      */
     protected $exchanger;
 
@@ -65,7 +65,6 @@ class Converter
     /**
      * Constructor.
      *
-     * @param \Cartalyst\Converter\Exchangers\ExchangerInterface $exchanger
      *
      * @return void
      */
@@ -77,7 +76,6 @@ class Converter
     /**
      * Set the measurement we want to convert from.
      *
-     * @param string $value
      *
      * @return $this
      */
@@ -90,8 +88,6 @@ class Converter
 
     /**
      * Returns the measurement we want to convert from.
-     *
-     * @return string
      */
     public function getFrom(): string
     {
@@ -101,8 +97,7 @@ class Converter
     /**
      * Set the measurement we want to convert to.
      *
-     * @param string $value
-     *
+     * @param  string  $value
      * @return $this
      */
     public function to($value): self
@@ -114,8 +109,6 @@ class Converter
 
     /**
      * Returns the measurement we want to convert to.
-     *
-     * @return string
      */
     public function getTo(): string
     {
@@ -125,7 +118,6 @@ class Converter
     /**
      * Set the value we want to convert.
      *
-     * @param float $value
      *
      * @return $this
      */
@@ -138,8 +130,6 @@ class Converter
 
     /**
      * Returns the value we want to convert.
-     *
-     * @return float
      */
     public function getValue(): float
     {
@@ -149,8 +139,7 @@ class Converter
     /**
      * Convert the given value.
      *
-     * @param float $value
-     *
+     * @param  float  $value
      * @return $this
      */
     public function convert($value = null): self
@@ -159,10 +148,10 @@ class Converter
             $this->value($value);
         }
 
-        $to   = $this->getMeasurement("{$this->getTo()}.unit");
+        $to = $this->getMeasurement("{$this->getTo()}.unit");
         $from = $this->getMeasurement("{$this->getFrom()}.unit");
 
-        $toOffset   = $this->getMeasurement("{$this->getTo()}.offset", 0);
+        $toOffset = $this->getMeasurement("{$this->getTo()}.offset", 0);
         $fromOffset = $this->getMeasurement("{$this->getFrom()}.offset", 0);
 
         $offset = ($toOffset * $from / $to) - $fromOffset;
@@ -174,10 +163,6 @@ class Converter
 
     /**
      * Format the value into the desired measurement.
-     *
-     * @param string|null $measurement
-     *
-     * @return string
      */
     public function format(?string $measurement = null): string
     {
@@ -229,8 +214,6 @@ class Converter
 
     /**
      * Returns the list of the available measurements.
-     *
-     * @return array
      */
     public function getMeasurements(): array
     {
@@ -240,7 +223,6 @@ class Converter
     /**
      * Set the measurements.
      *
-     * @param array $measurements
      *
      * @return $this
      */
@@ -254,12 +236,10 @@ class Converter
     /**
      * Returns information about the given measurement.
      *
-     * @param string     $measurement
-     * @param mixed|null $default
-     *
-     * @throws \Exception
-     *
+     * @param  mixed|null  $default
      * @return mixed
+     *
+     * @throws Exception
      */
     public function getMeasurement(string $measurement, $default = null)
     {
